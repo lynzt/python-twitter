@@ -162,7 +162,8 @@ class Api(object):
                  timeout=None,
                  sleep_on_rate_limit=False,
                  tweet_mode='compat',
-                 proxies=None):
+                 proxies=None,
+                 premium_endoint_30day=None):
         """Instantiate a new twitter.Api object.
 
         Args:
@@ -291,6 +292,8 @@ class Api(object):
             requests_log = logging.getLogger("requests.packages.urllib3")
             requests_log.setLevel(logging.DEBUG)
             requests_log.propagate = True
+
+        self.premium_endoint_30day = premium_endoint_30day
 
     @staticmethod
     def GetAppOnlyAuthToken(consumer_key, consumer_secret):
@@ -612,7 +615,7 @@ class Api(object):
           given by the raw_query.
         """
 
-        url = '%s/tweets/search/30day/%s.json' % (self.base_url, 'dev')
+        url = '%s/tweets/search/30day/%s.json' % (self.base_url, self.premium_endoint_30day)
 
         parameters = {}
 
