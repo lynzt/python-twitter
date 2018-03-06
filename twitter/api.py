@@ -162,8 +162,7 @@ class Api(object):
                  timeout=None,
                  sleep_on_rate_limit=False,
                  tweet_mode='compat',
-                 proxies=None,
-                 premium_dev_env='dev'):
+                 proxies=None):
         """Instantiate a new twitter.Api object.
 
         Args:
@@ -613,7 +612,7 @@ class Api(object):
           given by the raw_query.
         """
 
-        url = '%s/tweets/search/30day/%s.json' % (self.base_url, self.premium_dev_env)
+        url = '%s/tweets/search/30day/%s.json' % (self.base_url, 'dev')
 
         parameters = {}
 
